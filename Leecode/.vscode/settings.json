@@ -11,6 +11,14 @@
     "ostream": "cpp",
     "iostream": "cpp",
     "ratio": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "array": "cpp",
+    "bitset": "cpp",
+    "regex": "cpp",
+    "utility": "cpp",
+    "algorithm": "cpp",
+    "deque": "cpp",
+    "vector": "cpp",
+    "list": "cpp"
   }
 }
