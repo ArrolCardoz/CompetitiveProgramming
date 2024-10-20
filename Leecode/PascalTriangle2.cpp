@@ -1,10 +1,11 @@
-// 118
+// 119
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
-vector<vector<int>> generate(int numRows) {
+vector<int> generate(int numRows) {
+  numRows++;
   vector<vector<int>> ans;
   for (int i = 0; i < numRows; i++) {
     vector<int> currentRow(i + 1, 1);
@@ -19,12 +20,12 @@ vector<vector<int>> generate(int numRows) {
     ans.push_back(currentRow);
     // cout << endl;
   }
-  return ans;
+  return ans[numRows - 1];
 }
 
 int main() {
-  int numRows = 5;
-  generate(numRows);
+  int numRows = 3;
+  for (auto &it : generate(numRows)) cout << it << ' ';
 
   return 0;
 }
