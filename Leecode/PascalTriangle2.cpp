@@ -24,7 +24,7 @@ vector<int> generate(int numRows) {
 }
 
 int main() {
-  int numRows = 3;
+  int numRows = 5;
   for (auto &it : generate(numRows)) cout << it << ' ';
 
   return 0;
