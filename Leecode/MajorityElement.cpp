@@ -2,23 +2,23 @@
 using namespace std;
 
 int majorityElement(vector<int>& nums) {
-  int half = nums.size() + 0.5;
-  int maxNum = 0;
-  int count = 0;
+  pair<int, int> ans = {0, 0};
   for (auto& it : nums) {
-    if (it > maxNum) {
-      count == 0;
-      maxNum == it;
-    } else if (it == maxNum)
-      count++;
-    if (count > half) break;
-    ;
+    if (it == ans.first)
+      ans.second++;
+    else {
+      ans.second--;
+      if (ans.second < 0) {
+        ans.first = it;
+        ans.second++;
+      }
+    }
   }
-  return 0;
+  return ans.first;
 }
 
 int main() {
-  vector<int> nums = {0};
+  vector<int> nums = {2, 2, 1, 1, 1, 2, 2};
   cout << majorityElement(nums);
   return 0;
 }
