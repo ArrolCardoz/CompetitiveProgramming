@@ -17,6 +17,7 @@
     "unordered_set": "cpp",
     "vector": "cpp",
     "sstream": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "iomanip": "cpp"
   }
 }
