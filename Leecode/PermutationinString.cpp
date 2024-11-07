@@ -15,15 +15,15 @@ bool checkInclusion(string s1, string s2) {
     feqStr[s1[i] - 'a']++;
   }
 
-  int windowInd = 0;
-
   int windowSize = s1.length();
   for (int i = 0; i < s2.length(); i++) {
+    int windowInd = 0;
+
     int index = i;
     int feqWin[26] = {0};
 
     while (windowInd < windowSize && index < s2.length()) {
-      feqWin[s1[index] - 'a']++;
+      feqWin[s2[index] - 'a']++;
       index++;
       windowInd++;
     }
@@ -35,7 +35,7 @@ bool checkInclusion(string s1, string s2) {
 
 int main() {
   string s1 = "ab";
-  string s2 = "eidboo";
+  string s2 = "eidaboo";
   if (checkInclusion(s1, s2))
     cout << "True";
   else
