@@ -94,4 +94,4 @@ void solution() {
 int main() {
   solution();
   return 0;
-}  // netowrking project
+}  // computer graphics project
