@@ -94,4 +94,4 @@ void solution() {
 int main() {
   solution();
   return 0;
-}  // graphics project 4
+}  // graphics project COMPETED :D
