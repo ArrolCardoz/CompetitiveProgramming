@@ -94,4 +94,4 @@ void solution() {
 int main() {
   solution();
   return 0;
-}  // break day 2
+}  // Geog exam
