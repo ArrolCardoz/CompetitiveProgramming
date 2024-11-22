@@ -4,11 +4,20 @@ using namespace std;
 bool searchMatrix(vector<vector<int>>& mat, int target) {
   int numRow = mat.size();
   int numCol = mat[0].size();
-  int matrix = numRow * numCol;
+  int currentRow = 0;
   numRow--;
   numCol--;
-  while (matrix > 1) {
-    if (w) }
+  cout << numRow << endl;
+  while (currentRow <= numRow && numCol > -1) {
+    if (mat[currentRow][numCol] == target) {
+      return true;
+    }
+    if (mat[currentRow][numCol] > target)
+      numCol--;
+    else
+      currentRow++;
+  }
+  return false;
 }
 
 int main() {
@@ -22,5 +31,6 @@ int main() {
     cout << "true";
   else
     cout << "False";
+
   return 0;
 }
