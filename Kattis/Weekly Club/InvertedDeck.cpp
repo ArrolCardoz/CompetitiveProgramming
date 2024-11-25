@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solution() {
+int solution() {
   int n;
   cin >> n;
   int numInc = 1;
@@ -22,7 +22,7 @@ void solution() {
     }
     if ((isIncreasing && prevNum <= temp) ||
         (!isIncreasing && prevNum >= temp)) {
-      cout << isIncreasing << " && " << prevNum << " <= " << temp << endl;
+      // cout << isIncreasing << " && " << prevNum << " <= " << temp << endl;
 
       prevNum = temp;
 
@@ -34,10 +34,10 @@ void solution() {
       isIncreasing = false;
 
       numDec++;
-      cout << numDec << endl;
+      // cout << numDec << endl;
       if (numDec > 1) {
         cout << "impossible";
-        break;
+        return 0;
       }
     } else {
       prevNum = temp;
@@ -50,23 +50,30 @@ void solution() {
   // cout << num[decPtrBegin - 1] << " " << num[decPtrBegin] << endl;
   if (decPtrBegin > 0)
     while (num[decPtrBegin - 1] == num[decPtrBegin]) decPtrBegin--;
-  cout << numDec << " " << decPtrEnd << endl;
+  // cout << decPtrBegin << " " << decPtrEnd << endl;
 
   if (numDec == 0)
-    cout << "0  0" << endl;
+    cout << "1 1" << endl;
   else {
-    if (decPtrBegin == decPtrEnd) {
+    if (decPtrBegin == decPtrEnd) {  // if there is only 1 num in dec sub array
       cout << "impossible";
-    } else if (decPtrBegin == 0 && num[decPtrBegin] <= num[decPtrEnd + 1]) {
+    } else if (decPtrBegin == 0 && decPtrEnd == -1)  // when the whole seq is
+                                                     // dec
+      cout << "1 " << n << endl;
+    else if (decPtrBegin == 0 &&
+             num[decPtrBegin] <= num[decPtrEnd + 1]) {  // when dec starts at 0
       cout << decPtrBegin + 1 << " " << decPtrEnd + 1 << endl;
-    } else if ((decPtrEnd == -1) && num[decPtrEnd] >= num[decPtrBegin - 1]) {
-      cout << decPtrBegin + 1 << " " << decPtrEnd + 1 << endl;
+    } else if ((decPtrEnd == -1) &&
+               num[n - 1] >= num[decPtrBegin - 1]) {  // when dec end at n
+      cout << decPtrBegin + 1 << " " << n << endl;
+
     } else if (num[decPtrBegin] <= num[decPtrEnd + 1] &&
-               num[decPtrEnd] >= num[decPtrBegin - 1])
+               num[decPtrEnd] >= num[decPtrBegin - 1])  // check if its valid
       cout << decPtrBegin + 1 << " " << decPtrEnd + 1 << endl;
     else
       cout << "impossible";
   }
+  return 0;
 }
 
 int main() {
