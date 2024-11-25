@@ -18,6 +18,7 @@
     "vector": "cpp",
     "sstream": "cpp",
     "random": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "ratio": "cpp"
   }
 }
