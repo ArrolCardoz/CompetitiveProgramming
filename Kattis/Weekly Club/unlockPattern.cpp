@@ -4,47 +4,26 @@ using namespace std;
 int main() {
   int grid[3][3];
   int n = 3;
-  long double diagonal = 1.41421356237;
+  map<int, pair<int, int>> cords;
   long double ans = 0;
-  int counter = 0;
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
       int a;
       cin >> a;
-      grid[i][j] = a;
+      cords[a] = make_pair(i, j);
     }
   }
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < n; j++) {
-      if (i == 0 && j == 0) {
-        if (grid[i + 1][j] > grid[i][j] || grid[i][j + 1] > grid[i][j]) {
-          counter++;
-        }
-      } else if (i == 3 && j == 3) {
-        if (grid[i - 1][j] > grid[i][j] || grid[i][j - 1] > grid[i][j]) {
-          counter++;
-        }
-      }
+  for (int i = 1; i < 9; i++) {
+    int x = (cords[i + 1].first - cords[i].first);
+    int y = (cords[i + 1].second - cords[i].second);
+    // cout << cords[i].first << " " << cords[i].second << endl;
+    // cout << '(' << cords[i].first << ',' << cords[i].second << ')' << ' ' <<
+    // '('
+    //      << cords[i + 1].first << ',' << cords[i + 1].second << ')' << endl;
+    ans += sqrt((x * x) + (y * y));
+  }
 
-      else if (i == 0) {
-        if (grid[i + 1][j] > grid[i][j] || grid[i][j + 1] > grid[i][j] ||
-            grid[i][j - 1] > grid[i][j]) {
-          counter++;
-        }
-      } else if (j == 0) {
-        if (grid[i + 1][j] > grid[i][j] || grid[i][j + 1] > grid[i][j] ||
-            grid[i - 1][j] > grid[i][j]) {
-          counter++;
-        }
-      } else if (grid[i + 1][j] > grid[i][j] || grid[i][j + 1] > grid[i][j] ||
-                 grid[i - 1][j] > grid[i][j] || grid[i][j - 1] > grid[i][j]) {
-        counter++;
-      }
-    }
-  }
   //   cout << counter << endl;
-  ans += counter;
-  ans += (9 - counter) * diagonal;
   cout << fixed << setprecision(8) << ans;
   return 0;
 }
