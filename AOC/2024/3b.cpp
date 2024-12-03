@@ -23,31 +23,47 @@ long long findNum(string &str, long long &counter) {
 
   if (str[counter] != ')' || b == 0) return 0;
   counter++;  // Move past ')'
-
+  cout << a << " * " << b;
   return a * b;
 }
 
 int main() {
   string str;
   long long ans = 0;
-  while (cin >> str) {
+  while (getline(cin, str)) {  // Read entire line of corrupted memory
     long long counter = 0;
     long long previousCounter = 0;
-    int addOrNot = 0;
+    int doCtr = 0;
+    int dontCtr = 0;
+    string substring;
+
     while ((counter = str.find("mul", counter)) != string::npos) {
-      while (str.find("do()", previousCounter, counter) < counter &&
-             str.find("do()", previousCounter, counter) != string::npos)
-        addOrNot++;
-      while (str.find("don't()", previousCounter, counter) < counter &&
-             str.find("don't()", previousCounter, counter) != string::npos)
-        addOrNot--;
-      cout << addOrNot << endl;
+      substring = str.substr(previousCounter, counter - previousCounter);
+
+      // Find the most recent do() and don't()
+      doCtr = substring.rfind("do()");
+      dontCtr = substring.rfind("don't()");
+
+      // Print the current substring and the positions of do() and don't()
+      cout << "Substring: " << substring << endl;
+      cout << "doCtr: " << doCtr << " dontCtr: " << dontCtr << endl;
+
       counter += 3;  // Move past "mul"
       long long temp = findNum(str, counter);
-      if (addOrNot <= 0) ans += temp;
-      previousCounter = counter;
+      if (doCtr == -1 && dontCtr == -1) doCtr = 1;
+      if (doCtr >= dontCtr && doCtr != string::npos) {
+        previousCounter = counter;
+
+        ans += temp;
+        cout << " = " << ans << endl;
+      }
+
+      if (doCtr >= dontCtr && temp > 0) previousCounter = counter;
+      doCtr = 0;
+      dontCtr = 0;
     }
   }
+
   cout << "ANS: " << ans << endl;
   return 0;
 }
