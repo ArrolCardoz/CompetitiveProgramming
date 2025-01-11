@@ -20,6 +20,10 @@
     "random": "cpp",
     "iomanip": "cpp",
     "ratio": "cpp",
-    "cmath": "cpp"
+    "cmath": "cpp",
+    "algorithm": "cpp",
+    "*.tcc": "cpp",
+    "iosfwd": "cpp",
+    "*.ipp": "cpp"
   }
 }

@@ -8,8 +8,12 @@ int main() {
   cin >> str1;
   vector<string> ans;
   string final;
+  if (n == 1) {
+    cout << str1 << endl;
+    return 0;
+  }
   for (int i = 1; i < n; i++) {
-    cin >> str2;
+    if (!(cin >> str2)) break;
     final = str2;
     // cout << "TEsT " << str1 << ' ' << str2 << ' ' << i << endl;
 
@@ -17,9 +21,8 @@ int main() {
       if (i < n - 1) {
         cin >> str1;
         final = str1;
+        i++;
       }
-
-      i++;
 
     } else {
       ans.push_back(str1);
