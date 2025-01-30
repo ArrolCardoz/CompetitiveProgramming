@@ -24,6 +24,7 @@
     "algorithm": "cpp",
     "*.tcc": "cpp",
     "iosfwd": "cpp",
-    "*.ipp": "cpp"
+    "*.ipp": "cpp",
+    "tuple": "cpp"
   }
 }
