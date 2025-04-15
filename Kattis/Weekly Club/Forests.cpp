@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 // UnionFind class -- based on Howard Cheng's C code for UnionFind
 // Modified to use C++ by Rex Forsyth, Oct 22, 2003
 //
@@ -57,43 +56,28 @@ class UnionFind {
     return uf[x].p;
   }
 };
-
-int getID(string str, map<string, int>& id) {
-  if (id.find(str) == id.end()) {
-    int size1 = id.size();
-    id[str] = size1;
-    return size1;
-  }
-  return id[str];
-}
-
-void solution() {
-  int n;
-  cin >> n;
-
-  UnionFind uf(2 * n);
-  map<string, int> nameID;
-  vector<int> groupSize(2 * n, 1);
-  string str1, str2;
-  int id1, id2;
-  for (int i = 0; i < n; i++) {
-    cin >> str1 >> str2;
-    id1 = getID(str1, nameID);
-    id2 = getID(str2, nameID);
-    int parent1 = uf.find(id1);
-    int parent2 = uf.find(id2);
-    if (uf.merge(id1, id2)) {
-      int newParent = uf.find(id1);
-      groupSize[newParent] = groupSize[parent1] + groupSize[parent2];
-    }
-    cout << groupSize[uf.find(id1)] << endl;
-    // cout << id1 << endl;
-  }
-}
-
 int main() {
-  int n;
-  cin >> n;
-  while (n--) solution();
+  int p, t;
+  cin >> p >> t;
+
+  int i, j;
+  vector<set<int>> people(p);
+  UnionFind uf(p);
+
+  while (cin >> i >> j) {
+    people[i - 1].insert(j - 1);
+  }
+
+  for (int i = 0; i < p; i++) {
+    for (int j = i + 1; j < p; j++) {
+      if (people[i] == people[j]) uf.merge(i, j);
+    }
+  }
+
+  set<int> compare;
+  for (int i = 0; i < p; i++) compare.insert(uf.find(i));
+  cout << compare.size() << endl;
+  //   cout << "HI<<" << endl;
+
   return 0;
 }
