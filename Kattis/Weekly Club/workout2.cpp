@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+// attempt 2
+// failed again X(
 struct Jim {
   int usage;
   int recovery;
@@ -37,9 +39,10 @@ int main() {
       int cycle = people[i].recovery + people[i].usage;
       //   cout << "CYCLE" << cycle << endl;
       if (people[i].time < time &&
-          ((time - people[i].time) % cycle) > people[i].usage) {
+          ((time - people[i].time) % cycle) < people[i].usage) {
         // cout << time << '+' << people[i].time << '%' << cycle << endl;
-        if (jim[i].usage > people[i].recovery) {
+        if (jim[i].usage > (people[i].time + people[i].recovery) -
+                               (time - people[i].time) % cycle) {
           time += jim[i].usage;
           people[i].time = time;
           time += jim[i].recovery;
@@ -54,7 +57,8 @@ int main() {
         //      << endl;
         // cout << people[i].usage - (time + people[i].time) % cycle << endl;
         time += people[i].usage - (time - people[i].time) % cycle;
-        if (jim[i].usage > people[i].recovery) {
+        if (jim[i].usage > (people[i].time + people[i].recovery) -
+                               (time - people[i].time) % cycle) {
           time += jim[i].usage;
           people[i].time = time;
           time += jim[i].recovery;
@@ -63,7 +67,7 @@ int main() {
           time += jim[i].recovery;
         }
       }
-      cout << time << endl;
+      //   cout << time << endl;
     }
   }
   time -= jim[9].recovery;
