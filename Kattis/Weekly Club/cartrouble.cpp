@@ -1,3 +1,4 @@
+// failed attempt
 #include <bits/stdc++.h>
 using namespace std;
 void dfs(vector<int> &visited, int node, vector<vector<int>> &adjList) {
@@ -13,20 +14,22 @@ void dfs(vector<int> &visited, int node, vector<vector<int>> &adjList) {
 int main() {
   int n;
   cin >> n;
+  int num = 2000;
 
-  vector<vector<int>> adjList(n);
-  vector<vector<int>> adjListRev(n);
+  vector<vector<int>> adjList(num);
+  vector<vector<int>> adjListRev(num);
 
-  vector<int> order(n);
-  vector<int> visited(n, 0);
-  vector<int> visitedTemp(n, 0);
+  vector<int> order(num);
+  vector<int> visited(num, 0);
+  unordered_map<int, int> idToAddress;
+
   visited[0] = 1;
-  visitedTemp[0] = 1;
 
   for (int j = 0; j < n; j++) {
     int id, out;
     cin >> id >> out;
     order[j] = id;
+    idToAddress[id] = j;
 
     for (int i = 0; i < out; i++) {
       int input;
@@ -36,13 +39,15 @@ int main() {
     }
   }
   dfs(visited, 0, adjList);
-  dfs(visitedTemp, 0, adjListRev);
 
   int problemFound = false;
   for (auto &it : order) {
     if (it == 0) continue;
+    vector<int> visitedTemp(num, 0);
+
+    dfs(visitedTemp, it, adjList);
     // cout << it << ' ' << visited[it] << endl;
-    if (!visitedTemp[it]) {
+    if (visitedTemp[0] == 0) {
       cout << "TRAPPED " << it << endl;
       problemFound = true;
     }
