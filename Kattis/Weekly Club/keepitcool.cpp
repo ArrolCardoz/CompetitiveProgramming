@@ -1,60 +1,52 @@
 #include <bits/stdc++.h>
 using namespace std;
-// failed attempt
+
 int main() {
   int soda, student, slot, capacity;
   cin >> soda >> student >> slot >> capacity;
-  int total = 0;
 
-  vector<int> machince(slot, 0);
-  for (auto &it : machince) {
-    cin >> it;
-    total += it;
+  vector<pair<int, int>> machines(slot);  // {cold soda, index}
+  int total_cold = 0;
+
+  for (int i = 0; i < slot; ++i) {
+    cin >> machines[i].first;
+    machines[i].second = i;
+    total_cold += machines[i].first;
   }
-  if (total < student) {
+
+  if (total_cold < student) {
     cout << "impossible" << endl;
-    // cout << total << ' ' << student << endl;
     return 0;
   }
-  int limit = 1;
-  vector<int> ans(slot, 0);
-  while (soda > 0) {
-    if (limit == capacity) {
-      limit = 0;
-      continue;
-    }
-    for (int i = 0; i < slot; i++) {
-      if (machince[i] == limit) {
-        machince[i] += INT_MAX;
-        ans[i] = capacity - limit;
-        soda -= capacity - limit;
-        total -= limit;
-        // cout << i << ' ' << total << ' ' << soda << endl;
-        if (total < student) {
-          soda = capacity - limit;
-          ans[i] = 0;
-          total += limit;
-          limit = -1;
-          //   cout << total << ' ' << student << endl;
-          if (limit == 0) {
-            cout << "impossible" << endl;
-            return 0;
-          }
-        }
-        if (soda < 0) {
-          ans[i] += soda;
-          break;
-        }
-        // cout << soda << endl;
-      }
-    }
-    if (limit == 0 && soda > 0) {
-      cout << "impossible" << endl;
-      return 0;
-    }
-    limit++;
+
+  // Sort machines by current cold soda level (ascending)
+  sort(machines.begin(), machines.end());
+
+  vector<int> ans(slot, 0);  // how much soda to pour in each slot
+
+  for (int i = 0; i < slot && soda > 0; ++i) {
+    int cold = machines[i].first;
+    int idx = machines[i].second;
+    int pour = min(soda, capacity - cold);
+    ans[idx] = pour;
+    soda -= pour;
   }
 
-  for (auto &it : ans) cout << it << ' ';
+  // After pouring, check if remaining cold soda is enough for students
+  int remaining_cold = 0;
+  for (int i = 0; i < slot; ++i) {
+    int final_cold = machines[i].first + ans[machines[i].second];
+    if (final_cold == machines[i].first) {  // not filled
+      remaining_cold += machines[i].first;
+    }
+  }
+
+  if (remaining_cold < student) {
+    cout << "impossible" << endl;
+  } else {
+    for (int x : ans) cout << x << ' ';
+    cout << endl;
+  }
+
   return 0;
 }
