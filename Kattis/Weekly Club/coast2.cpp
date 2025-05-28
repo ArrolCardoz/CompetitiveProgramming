@@ -61,7 +61,7 @@ int main() {
       grid[i][j] = input - '0';
     }
   }
-
+  // process
   for (int i = 0; i < row; i++) {
     for (int j = 0; j < col; j++) {
       //   cout << grid[i][j];
@@ -71,6 +71,7 @@ int main() {
     }
     // cout << endl;
   }
+  // add ans
   int ans = 0;
   for (auto& it : coastValue) {
     for (auto& a : it) {
