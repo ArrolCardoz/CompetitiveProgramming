@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-// gameDev day
+// gameDev day 2
 using namespace std;
 
 int main() {
