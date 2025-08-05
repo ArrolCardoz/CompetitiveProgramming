@@ -8,10 +8,10 @@ int main() {
   while (cin >> str) {
     repeat[str]++;
     if (repeat[str] > 1) {
-      cout << "no" << endl;
+      cout << "yes" << endl;
       return 0;
     }
   }
-  cout << "yes" << endl;
+  cout << "no" << endl;
   return 0;
 }
