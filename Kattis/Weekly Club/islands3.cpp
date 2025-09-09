@@ -40,9 +40,9 @@ void markLand(int row, int col, vector<string>& grid, char change) {
 }
 
 void checkCloud(int row, int col, vector<string>& grid,
-                vector<vector<bool>> visited) {
+                vector<vector<bool>>& visited, bool& fillWater) {
   visited[row][col] = true;
-  bool fillWater = true;
+
   int dx[] = {0, 0, 1, -1};
   int dy[] = {1, -1, 0, 0};
   for (int i = 0; i < 4; i++) {
@@ -51,7 +51,7 @@ void checkCloud(int row, int col, vector<string>& grid,
     if (r >= 0 && r < grid.size() && c >= 0 && c < grid[0].size() &&
         !visited[r][c]) {
       if (grid[r][c] == 'C') {
-        checkCloud(r, c, grid, visited);
+        checkCloud(r, c, grid, visited, fillWater);
       }
       if (grid[r][c] == 'L') {
         // cout << "tsetasetgseg" << endl;
@@ -69,7 +69,8 @@ void processClouds(vector<string>& grid, vector<vector<bool>>& visited) {
   for (int i = 0; i < grid.size(); i++) {
     for (int j = 0; j < grid[0].size(); j++) {
       if (grid[i][j] == 'C') {
-        checkCloud(i, j, grid, visited);
+        bool fillWater = false;
+        checkCloud(i, j, grid, visited, fillWater);
       }
       //   cout << grid[i][j];
     }
@@ -81,6 +82,7 @@ int checkIslands(vector<string>& grid) {
   int ans = 0;
   for (int i = 0; i < grid.size(); i++) {
     for (int j = 0; j < grid[0].size(); j++) {
+      //   cout << grid[i][j];
       if (grid[i][j] == 'L') {
         markLand(i, j, grid, 'X');
         // cout << endl;
@@ -90,6 +92,7 @@ int checkIslands(vector<string>& grid) {
         // cout << i << ' ' << j << endl;
         ans++;
       }
+      //   cout << endl;
     }
   }
   return ans;
@@ -104,6 +107,7 @@ int main() {
     cin >> grid[i];
   }
   processClouds(grid, visited);
+
   int ans = checkIslands(grid);
   cout << ans << endl;
   return 0;
