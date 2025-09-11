@@ -64,7 +64,7 @@ void checkCloud(int row, int col, vector<string>& grid,
 }
 
 void processClouds(vector<string>& grid, vector<vector<bool>>& visited) {
-  int dx[] = {0, 0, 1, -1};
+  int dx[] = {0, 0, 1, -1};6
   int dy[] = {1, -1, 0, 0};
   for (int i = 0; i < grid.size(); i++) {
     for (int j = 0; j < grid[0].size(); j++) {
