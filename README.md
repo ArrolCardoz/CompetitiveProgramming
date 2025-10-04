@@ -18,7 +18,6 @@ Not all of these solutions are correct, or even finished. There might also be so
 
 - 💡 **LeetCode** – Focused on arrays, strings, and interview-style problems.
 - ⚔️ **Codewars** – Fun challenges to stay sharp.
-- 🎯 **Codeforces / AtCoder (occasional)** – Extra contests for practice.
 
 ---
 
