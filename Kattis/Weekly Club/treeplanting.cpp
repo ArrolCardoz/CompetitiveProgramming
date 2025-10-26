@@ -7,7 +7,8 @@ int numTree[10'000'004][4] = {0};
 int const MOD = 1'000'000'007;
 
 void solution() {
-  for (int i = 0; i < 10'000'000; i++) {
+  numTree[0][0] = 1;
+  for (int i = 1; i < 10'000'000; i++) {
     numTree[i][0] = ((numTree[i - 1][2] + numTree[i - 1][3]) % MOD + 1) % MOD;
     numTree[i][1] = numTree[i - 1][0];
     numTree[i][2] = numTree[i - 1][1];
@@ -22,7 +23,7 @@ int main() {
   while (n--) {
     int input;
     cin >> input;
-    cout << (numTree[input][1] + numTree[input][2]) % MOD;
-  }
+    cout << (numTree[input][1] + numTree[input][2]) % MOD << endl;
+    }
   return 0;
 }
