@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    "*.ejs": "html",
     "iostream": "cpp",
     "ostream": "cpp",
     "array": "cpp",
@@ -25,6 +26,8 @@
     "*.tcc": "cpp",
     "iosfwd": "cpp",
     "*.ipp": "cpp",
-    "tuple": "cpp"
+    "tuple": "cpp",
+    "span": "cpp",
+    "ranges": "cpp"
   }
 }
