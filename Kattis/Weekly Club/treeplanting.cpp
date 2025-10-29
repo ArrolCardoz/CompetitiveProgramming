@@ -12,7 +12,7 @@ void solution() {
     numTree[i][0] = ((numTree[i - 1][2] + numTree[i - 1][3]) % MOD + 1) % MOD;
     numTree[i][1] = numTree[i - 1][0];
     numTree[i][2] = numTree[i - 1][1];
-    numTree[i][3] = numTree[i - 1][2] + numTree[i - 1][3];
+    numTree[i][3] = (numTree[i - 1][2] + numTree[i - 1][3]) % MOD;
   }
 }
 
@@ -24,6 +24,6 @@ int main() {
     int input;
     cin >> input;
     cout << (numTree[input][1] + numTree[input][2]) % MOD << endl;
-    }
+  }
   return 0;
 }
