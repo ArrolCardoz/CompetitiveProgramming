@@ -8,7 +8,7 @@ int const MOD = 1'000'000'007;
 
 void solution() {
   numTree[0][0] = 1;
-  for (int i = 1; i < 10'000'000; i++) {
+  for (int i = 1; i <= 10'000'000; i++) {
     numTree[i][0] = ((numTree[i - 1][2] + numTree[i - 1][3]) % MOD + 1) % MOD;
     numTree[i][1] = numTree[i - 1][0];
     numTree[i][2] = numTree[i - 1][1];
