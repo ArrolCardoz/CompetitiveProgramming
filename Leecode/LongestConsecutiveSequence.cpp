@@ -10,7 +10,7 @@ int longestConsecutive(vector<int>& nums) {
   total.insert(nums[0]);
   for (int i = 1; i < nums.size(); i++) {
     if (nums[i - 1] + 1 < nums[i]) {
-      for (auto& it : total) cout << total << ' ';
+      for (auto& it : total) cout << it << ' ';
       maximum = max(current, maximum);
       current = 1;
       total.clear();
