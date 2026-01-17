@@ -6,7 +6,10 @@ int main() {
   cin >> n;
   string str;
   cin >> n;
-  cin >> str;
-  cout << 1 << endl << str << endl;
+  cout << n << endl;
+  while (n--) {
+    cin >> str;
+    cout << str << endl;
+  }
   return 0;
 }
