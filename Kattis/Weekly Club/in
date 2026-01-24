@@ -1,12 +1,7 @@
-11
-S 1 !something
-E one
-E two
-E three
-E four
-E five
-S 3 three !four one
-D 1
-S 3 three !four one
-D 1
-S 3 three !four one
+6 7
+1
+5
+3
+3
+5
+1
