@@ -9,23 +9,35 @@ struct date {
   // arrive=1,depart=0
 };
 
-date operator+(date a, int b) {
-  a.date = (a.date + (b % 60)) % 60;
+ostream& operator<<(ostream& os, const date& d) {
+  os << d.year << "-" << d.month << "-" << d.date << " " << d.hour << ":"
+     << d.min;
+  return os;
+}
 
-  if (a.min + b >= 60) {
-    a.hour = (a.hour + (b / 60)) % 24;
-    if (a.hour + (b / 60) >= 24) {
-      a.date++;
-      if (a.date > maxMonth[a.month - 1]) {
-        // leap year
-        if (a.month != 2 && a.year != 2016) {
-          a.date = 1;
-          a.month++;
-          if (a.month > 12) {
-            a.month = 1;
-            a.year++;
-          }
-        }
+date operator+(date a, int b) {
+  a.min += b;
+  while (a.min >= 60) {
+    a.min -= 60;
+    a.hour++;
+  }
+
+  while (a.hour >= 24) {
+    a.hour -= 24;
+    a.date++;
+
+    int limit = maxMonth[a.month - 1];
+    if (a.month == 2 && a.year == 2016) {
+      limit = 29;
+    }
+
+    if (a.date > limit) {
+      a.date = 1;
+      a.month++;
+
+      if (a.month > 12) {
+        a.month = 1;
+        a.year++;
       }
     }
   }
@@ -63,7 +75,9 @@ bool sortDate(date a, date b) {
           else if (b.min < a.min)
             return false;
           else {
-            return true;
+            // state
+            if (!a.state && b.state) return true;
+            return false;
           }
         }
       }
@@ -71,7 +85,7 @@ bool sortDate(date a, date b) {
   }
 }
 
-bool solution() {
+void solution() {
   int n, cleaningTime;
   vector<date> bookings;
 
@@ -80,55 +94,29 @@ bool solution() {
   bookings.reserve(n * 2);
   // cerr << n * 2 << endl;
 
-  if (!n) return false;
+  if (!n) return;
   while (n--) {
-    string temp;
-    char str;
-    int num;
+    char temp[25];
+
     date arrive, depart;
     arrive.state = 1;
     depart.state = 0;
-    cin >> temp;
-    // cerr << temp << ' ';
     //  arrivedate
-    cin >> num;
-    cin >> str;
-    arrive.year = num;
-    // cerr << num << ' ';
-    cin >> num;
-    cin >> str;
-    arrive.month = num;
-    // cerr << num << ' ';
-    cin >> num;
-    arrive.date = num;
-    // cerr << num << ' ';
-    cin >> num;
-    cin >> str;
-    arrive.hour = num;
-    // cerr << num << ' ';
-    cin >> num;
-    arrive.min = num;
-    // cerr << num << ' ';
+    scanf("%s %d-%d-%d %d:%d", temp, &arrive.year, &arrive.month, &arrive.date,
+          &arrive.hour, &arrive.min);
+
     //  depart
-    cin >> num;
-    cin >> str;
-    depart.year = num;
-    cin >> num;
-    cin >> str;
-    depart.month = num;
-    cin >> num;
-    depart.date = num;
-    cin >> num;
-    cin >> str;
-    depart.hour = num;
-    cin >> num;
-    depart.min = num;
+
+    scanf("%d-%d-%d %d:%d", &depart.year, &depart.month, &depart.date,
+          &depart.hour, &depart.min);
+
     depart = depart + cleaningTime;
+
     bookings.push_back(arrive);
     bookings.push_back(depart);
   }
   sort(begin(bookings), end(bookings), sortDate);
-  int ans = 0, MAXans = -1;
+  int ans = 0, MAXans = 0;
   for (auto& it : bookings) {
     if (it.state) {
       ans++;
@@ -137,7 +125,6 @@ bool solution() {
       ans--;
   }
   cout << MAXans << endl;
-  return true;
 }
 
 int main() {
