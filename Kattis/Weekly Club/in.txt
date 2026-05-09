@@ -1,6 +1,3 @@
-eeny meeny miny
-4
-Kalle
-Lisa
-Alvar
-Rakel
+10 12
+71293781758123 72784
+1 12345677654321
