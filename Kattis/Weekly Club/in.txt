@@ -1,4 +1,7 @@
-3
-The quick brown fox jumps over the lazy dog.
-ZYXW, vu TSR Ponm lkj ihgfd CBA.
-.,?!'" 92384 abcde FGHIJ
+0 30 0 30
+5 35 5 35
+0 20 0 20
+7 27 7 27
+0 10 0 10
+9 19 9 19
+0 0 0 0

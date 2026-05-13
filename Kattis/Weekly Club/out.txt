@@ -1,3 +1,6 @@
-pangram
-missing eq
-missing klmnopqrstuvwxyz
+1350
+1350
+1620
+1620
+1890
+1890
