@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
+typedef ll = int64_t;
 
 struct vec {
   ll x, y, z;
@@ -32,6 +32,7 @@ void solution() {
     cout << "No collision" << endl;
     return;
   }
+
   float dis = (B * B - 4 * A * C);
   if (dis < 0) {
     cout << "No collision" << endl;

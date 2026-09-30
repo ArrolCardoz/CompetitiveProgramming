@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Supposed to use 64 bit int
 int main() {
   int64_t a, b;
   while (cin >> a >> b) {
