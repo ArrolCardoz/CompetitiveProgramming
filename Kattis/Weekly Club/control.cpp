@@ -7,6 +7,7 @@ Since all the ingredients are distict we can just add up the sets they
 are currently in (initially everyone is in a set by itself) and
 if |ingredients| < |the set we added up|
 by pigon hole principle we have more than requied ingredients.
+
 Solution:-
  As stated in class I used union find data structure because of the
 way we add up the sets. In order to get the frequency I maintained a frequency
