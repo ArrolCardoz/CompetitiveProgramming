@@ -1,3 +1,7 @@
-Bob
-Alice
-doctor takes a break
+queue
+not sure
+impossible
+stack
+priority queue
+impossible
+impossible
