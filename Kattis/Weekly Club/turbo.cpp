@@ -1,3 +1,21 @@
+/*
+As stated in lab I used a fenwick tree to solve this problem
+Setup:-
+The fewick tree is used as an active rank of the given array
+Instead of storing the array as it was given I stored as an inverse index
+array(index array) so I can look up the position of required number without
+needing to scan the array. This is possible only because all the numbers are
+distinct.
+
+Idea:-
+Now that we have a way to get the numbers in constant time for the solution we
+only have to track the start(lo) and end(hi) pointer of the array and look up
+the rank with fenwick tree and get the difference from the pointer, decrement
+the rank of that position which means removing the element without actually
+removing it and fenwick tree updates the remaining ranks. Shrink the pointer and
+alternate the pointers as stated in the problem and continue till the start
+pointer < end pointer.
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
