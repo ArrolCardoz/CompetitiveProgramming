@@ -1,21 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solution() {}
-
+typedef pair<int, int> ii;
+void fastIO() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+}
 int main() {
-  map<long long, int> map;
-
-  long long n, k;
+  fastIO();
+  int n, k;
+  int ans = 0;
+  int curr = 0;
+  priority_queue<pair<int, int>, vector<ii>, greater<ii>> pq;
+  int in, out;
   cin >> n >> k;
-  for (long long i = 0; i < n; i++) {
-    long long a, b;
-    cin >> a >> b;
-
-    for (long long j = a; j <= b; j++) map[j]++;
+  while (n--) {
+    cin >> in >> out;
+    pq.push({in, 1});
+    pq.push({out + k + 1, 0});
   }
-
-  for (auto &it : map) cout << it.first << " " << it.second << endl;
+  while (!pq.empty()) {
+    ii top = pq.top();
+    pq.pop();
+    if (top.second) {
+      curr++;
+      ans = max(ans, curr);
+    } else {
+      curr--;
+    }
+    // cerr << curr << ' ' << top.second << endl;
+  }
+  cout << ans << endl;
 
   return 0;
 }
