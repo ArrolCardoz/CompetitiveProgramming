@@ -1,7 +1,5 @@
-queue
-not sure
-impossible
-stack
-priority queue
-impossible
-impossible
+not a ruler
+perfect
+missing 1 2 3 4
+not a ruler
+missing 6

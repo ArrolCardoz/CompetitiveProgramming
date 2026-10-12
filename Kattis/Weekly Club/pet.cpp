@@ -6,19 +6,17 @@ void fastIO() {
 }
 int main() {
   fastIO();
-  int n = 5, ans = 0, idx = 0;
-  for (int j = 1; j <= n; j++) {
-    int temp = 0;
-    for (int i = 0; i < 4; i++) {
-      int a;
-      cin >> a;
-      temp += a;
-    }
-    if (temp > ans) {
-      ans = temp;
-      idx = j;
+
+  int best = 0, winner = 0;
+  for (int c = 1; c <= 5; c++) {
+    vector<int> g(4);
+    for (int& x : g) cin >> x;
+
+    int score = accumulate(g.begin(), g.end(), 0);
+    if (score > best) {
+      best = score;
+      winner = c;
     }
   }
-  cout << idx << ' ' << ans << endl;
-  return 0;
+  cout << winner << ' ' << best << '\n';
 }
