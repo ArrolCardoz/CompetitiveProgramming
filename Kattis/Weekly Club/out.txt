@@ -1,2 +1,1 @@
-tautology
-not
+10
