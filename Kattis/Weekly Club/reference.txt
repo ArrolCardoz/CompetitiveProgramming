@@ -1,5 +1,5 @@
 lowest set bit index:   __builtin_ctz(mask)     (mask != 0)
-clear lowest set bit:   mask &= mask - 1
+clear lowest set bit:   #define LSOne(S) ((S) & -(S))
 count set bits:         __builtin_popcount(mask)
 check bit i:            (mask >> i) & 1
 set / clear / flip:     mask |= 1<<i ; mask &= ~(1<<i) ; mask ^= 1<<i
