@@ -1,0 +1,7 @@
+lowest set bit index:   __builtin_ctz(mask)     (mask != 0)
+clear lowest set bit:   mask &= mask - 1
+count set bits:         __builtin_popcount(mask)
+check bit i:            (mask >> i) & 1
+set / clear / flip:     mask |= 1<<i ; mask &= ~(1<<i) ; mask ^= 1<<i
+all subsets:            for (int m = 0; m < (1<<n); m++)
+submasks of m:          for (int s = m; s; s = (s-1) & m)
