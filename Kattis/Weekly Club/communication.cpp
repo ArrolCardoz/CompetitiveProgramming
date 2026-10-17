@@ -8,7 +8,7 @@ void fastIO() {
   cin.tie(NULL);
 }
 
-void computeAns(vector<int>& ans) {
+void computeAll(vector<int>& ans) {
   for (int i = 0; i < 256; i++) {
     ans[(i ^ ((i << 1) & EIGHT_BIT_MASK))] = i;
   }
@@ -16,7 +16,7 @@ void computeAns(vector<int>& ans) {
 int main() {
   fastIO();
   vector<int> ans(256, 0);
-  computeAns(ans);
+  computeAll(ans);
 
   int n;
   int i;
