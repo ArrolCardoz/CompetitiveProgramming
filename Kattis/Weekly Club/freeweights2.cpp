@@ -1,3 +1,18 @@
+/*
+Idea:- This problem is about BSTA where the solution(check function) is too slow
+to check all the given pairs in the solution becaues the number of pairs is
+greater than 10^4 for a n^2 solution to work.
+So we use binary search to get the answer.
+I store the weights in a vector of vector (A) and a vector (ost)
+'A' is the 2 dumbell rack and is used to check if the answer is right or not.
+'ost' is the sorted  array used for binary search. There are duplicates so the
+index is adjusted accordingly.
+
+the check function is implemented as mention in lab with odd and even counter.
+Finally the vector ost was initially an order statics tree because I thought it
+is more convient since there are dupicates and I need to sort the vector but
+since all numbers only repeat twice a sorted vector is faster.
+*/
 #include <bits/stdc++.h>
 using namespace std;
 

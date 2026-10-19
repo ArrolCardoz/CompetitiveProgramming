@@ -1,3 +1,12 @@
+/*
+In this question the n goes up to 10^5 whereas the possible answers are only
+255. So we just compute all the possible answers and print it from the computed
+answers.
+
+Computation = (i ^ ((i << 1) Since we are shifting left we if the first bit is a
+1 when its greater than 255. To solve that we can either always turn the 9th bit
+off or have a mask which is what I did (EIGHT_BIT_MASK).
+*/
 #include <bits/stdc++.h>
 using namespace std;
 

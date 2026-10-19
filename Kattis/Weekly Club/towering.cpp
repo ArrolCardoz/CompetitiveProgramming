@@ -1,3 +1,14 @@
+/*
+Since the number of towers given is only 6.
+We can go with a n*n! solution since n<10
+
+The solution is simple where its important to sort an array before using
+next_permutation() We can check if the paritial array is sorted or not with
+is_sorted() A thing a learned about is_sorted is it need an object comparator
+and we can get it with  greater<int>() where as priority queue, sets, maps, etc
+take a comparator as a type
+Finally we check if we have the right answer with accumulate()
+*/
 #include <bits/stdc++.h>
 using namespace std;
 void fastIO() {
