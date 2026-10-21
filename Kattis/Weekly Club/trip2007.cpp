@@ -13,6 +13,7 @@ bool solution(bool& ok) {
   ok = true;
   map<int, int> freqTable;
   int maxNum = -1;
+
   for (int i = 0; i < n; i++) {
     cin >> input;
     freqTable[input]++;
@@ -23,11 +24,12 @@ bool solution(bool& ok) {
   cout << maxNum << endl;
 
   for (auto& [key, value] : freqTable) {
-    // cerr << key << ' ' << value << endl;
     for (int i = 0; i < value; i++) {
       ans[i].push_back(key);
     }
   }
+
+  // printing solution
   for (auto& v : ans) {
     for (int i = 0; i < (int)v.size(); i++) {
       if (i) cout << ' ';
