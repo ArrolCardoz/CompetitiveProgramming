@@ -24,7 +24,7 @@ bool solution() {
   for (auto& it : sprinklers) {
     cin >> it.x >> it.r;
     double halfW = (double)w / 2.0;
-    double spR = (float)it.r;
+    double spR = (double)it.r;
     if (spR < halfW) {
       it.top_l = it.top_r = spR;
     } else {
