@@ -9,7 +9,7 @@ void fastIO() {
 void solution(priority_queue<pii>& PQ, int64_t& ans) {
   while (!PQ.empty()) {
     auto [dest, letters] = PQ.top();
-    cerr << dest << ' ' << letters << endl;
+    // cerr << dest << ' ' << letters << endl;
     PQ.pop();
     ans += dest * 2 * ((letters + (k - 1)) / k);
     int64_t remaining = 0;
