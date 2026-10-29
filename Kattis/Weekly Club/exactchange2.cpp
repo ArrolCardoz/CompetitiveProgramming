@@ -1,3 +1,13 @@
+/*
+Classic coin exchange problem except if the answer is impossible we have to need
+the smallest answer that is greater than the goal.
+Since the maximum solution is not greater than 10000 if the goal is not possible
+we can linear search until we find the answer.
+
+Other comments: Since there are many test cases we need to reset the memo table
+everytime. The A tables will get overwritten as we are not reading only
+upto n and never going out of bound.
+*/
 #include <bits/stdc++.h>
 using namespace std;
 const int MAX_N = 105;

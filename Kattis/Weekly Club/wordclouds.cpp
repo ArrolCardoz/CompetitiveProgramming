@@ -1,3 +1,13 @@
+/*
+Eventhough we have a 2D memo table, since we know that the width is strictly
+positive(<=10) we know that the starting points is always distinct. So remaining
+width (remW) and index (idx) will always have the same maximum height (currMaxH)
+i.e. it is tied with the state dp(idx,remW). So we can get away with a 2D table
+while having a dp with 3 parameters.
+
+DP:- The dp function tries all the possible combination and saves the
+computation and returns if we have already computed the current state.
+*/
 #include <bits/stdc++.h>
 using namespace std;
 const int MAX_N = 5005;
